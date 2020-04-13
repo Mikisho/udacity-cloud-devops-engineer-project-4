@@ -4,8 +4,7 @@ WORKDIR /app
 
 COPY . app.py /app/
 
-RUN pip install --upgrade pip &&\
-    pip install --trusted-host pypi.python.org -r requirements.txt
+RUN make install-requirements
 
 # Expose port 80
 EXPOSE 80
