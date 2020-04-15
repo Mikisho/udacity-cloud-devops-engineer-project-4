@@ -1,6 +1,7 @@
 version: 2.1
+
 jobs:
-  build:
+  build-and-lint:
     docker:
       - image: circleci/python:3.7
     steps:
@@ -40,7 +41,12 @@ jobs:
 
       # Run lint
       - run:
-          name: Run lint
+          name: Lint
           command: |
             . venv/bin/activate
             make lint
+
+workflows:
+  main:
+    jobs:
+      - build-and-lint
