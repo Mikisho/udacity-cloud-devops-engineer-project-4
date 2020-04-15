@@ -1,22 +1,14 @@
 version: 2.1
-
 jobs:
   build-and-lint:
     docker:
-      - image: circleci/python:3.7
+      - image: "circleci/python:3.7"
     steps:
       - checkout
-
-      # Load python cache
       - restore_cache:
           keys:
-            # Find a cache corresponding to this specific requirements.txt checksum
-            # when this file is changed, this key will fail
             - v1-pip-deps-{{ checksum "requirements.txt" }}
-            # Find the most recently generated cache used from any branch
             - v1-pip-deps-
-
-      # Install python deps
       - run:
           name: Install python dependencies
           command: |
@@ -24,28 +16,20 @@ jobs:
             python -m venv venv
             . venv/bin/activate
             make install
-
-      # Save python cache
       - save_cache:
           key: v1-pip-deps-{{ checksum "requirements.txt" }}
           paths:
             - ./venv
-
-      # Install hadolint
-      - run:
+      - run: null
         name: Install hadolint
         command: |
-          # Install hadolint
           wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64
           chmod +x /bin/hadolint
-
-      # Run lint
       - run:
           name: Lint
           command: |
             . venv/bin/activate
             make lint
-
 workflows:
   main:
     jobs:
