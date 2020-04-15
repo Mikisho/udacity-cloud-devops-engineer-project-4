@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . app.py /app/
 
-RUN make install-requirements
+RUN make install
 
 # Expose port 80
 EXPOSE 80
