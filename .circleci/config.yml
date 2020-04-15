@@ -1,46 +1,46 @@
 version: 2.1
 jobs:
-  build-and-lint:
-    docker:
-      - image: circleci/python:3.7
-    steps:
-      - checkout
+    build-and-lint:
+        docker:
+            - image: circleci/python:3.7
+        steps:
+            - checkout
 
-      - restore_cache:
-          keys:
-            # Find a cache corresponding to this specific requirements.txt checksum
-            # when this file is changed, this key will fail
-            - v1-pip-deps-{{ checksum "requirements.txt" }}
-            # Find the most recently generated cache used from any branch
-            - v1-pip-deps-
+            - restore_cache:
+                  keys:
+                      # Find a cache corresponding to this specific requirements.txt checksum
+                      # when this file is changed, this key will fail
+                      - v1-pip-deps-{{ checksum "requirements.txt" }}
+                      # Find the most recently generated cache used from any branch
+                      - v1-pip-deps-
 
-      - run:
-          name: Install python dependencies
-          command: |
-            # Install requirements
-            python -m venv venv
-            . venv/bin/activate
-            make install
+            - run:
+                  name: Install python dependencies
+                  command: |
+                      # Install requirements
+                      python -m venv venv
+                      . venv/bin/activate
+                      make install
 
-      - save_cache:
-          key: v1-pip-deps-{{ checksum "requirements-dev.txt" }}
-          paths:
-            - ./venv
+            - save_cache:
+                  key: v1-pip-deps-{{ checksum "requirements-dev.txt" }}
+                  paths:
+                      - ./venv
 
-      - run:
-        name: Install hadolint
-        command: |
-          # Install hadolint
-          wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64
-          chmod +x /bin/hadolint
+            - run:
+                  name: Install hadolint
+                  command: |
+                      # Install hadolint
+                      wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64
+                      chmod +x /bin/hadolint
 
-      - run:
-          name: Linting
-          command: |
-            . venv/bin/activate
-            make lint
+            - run:
+                  name: Linting
+                  command: |
+                      . venv/bin/activate
+                      make lint
 
 workflows:
-  main:
-    jobs:
-      - build-and-lint
+    main:
+        jobs:
+            - build-and-lint
