@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
 
+      # Load python cache
       - restore_cache:
           keys:
             # Find a cache corresponding to this specific requirements.txt checksum
@@ -14,24 +15,32 @@ jobs:
             # Find the most recently generated cache used from any branch
             - v1-pip-deps-
 
+      # Install python deps
       - run:
-          name: Install dependencies
+          name: Install python dependencies
           command: |
             # Install requirements
             python -m venv venv
             . venv/bin/activate
             make install
-            # Install hadolint
-            wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
-            chmod +x /bin/hadolint
 
+      # Save python cache
       - save_cache:
-          key: v1-pip-deps-{{ checksum "requirements-dev.txt" }}
+          key: v1-pip-deps-{{ checksum "requirements.txt" }}
           paths:
             - ./venv
 
+      # Install hadolint
       - run:
-          name: Linting
+        name: Install hadolint
+        command: |
+          # Install hadolint
+          wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64
+          chmod +x /bin/hadolint
+
+      # Run lint
+      - run:
+          name: Run lint
           command: |
             . venv/bin/activate
             make lint
