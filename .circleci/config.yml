@@ -23,7 +23,7 @@ jobs:
                       make install
 
             - save_cache:
-                  key: v1-pip-deps-{{ checksum "requirements-dev.txt" }}
+                  key: v1-pip-deps-{{ checksum "requirements.txt" }}
                   paths:
                       - ./venv
 
