@@ -43,6 +43,9 @@ jobs:
                       source ~/.devops/bin/activate
                       make test
 
+            - store_test_results:
+                  path: test-results/
+
 workflows:
     main:
         jobs:
