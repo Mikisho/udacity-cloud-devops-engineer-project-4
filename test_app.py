@@ -23,3 +23,4 @@ def test_predict():
     )
 
     assert res.status_code == 200
+    assert res.data == "test"
