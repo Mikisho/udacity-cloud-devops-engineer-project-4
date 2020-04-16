@@ -5,7 +5,7 @@ def test_home():
     res = app.test_client().get("/")
 
     assert res.status_code == 200
-    assert "Sklearn Prediction Home" in res.data
+    assert "Sklearn Prediction Home" in res.data.decode("utf-8")
 
 
 def test_predict():
