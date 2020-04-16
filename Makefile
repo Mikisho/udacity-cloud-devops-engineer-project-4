@@ -15,12 +15,12 @@ install:
 	pip3 install --trusted-host pypi.python.org -r requirements.txt
 
 install-hadolint:
-	wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64
-	chmod +x /bin/hadolint
+	sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-Linux-x86_64
+	sudo chmod +x /bin/hadolint
 
 install-minikube:
-	wget -O /bin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-	chmod +x /bin/minikube
+	sudo wget -O /bin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+	sudo chmod +x /bin/minikube
 
 install-all: install install-hadolint
 
