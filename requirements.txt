@@ -2,3 +2,4 @@ flask
 pylint
 black
 pytest
+locust
