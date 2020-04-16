@@ -32,10 +32,16 @@ jobs:
                       make install-hadolint
 
             - run:
-                  name: Linting
+                  name: Run Lint
                   command: |
                       source ~/.devops/bin/activate
                       make lint
+
+            - run:
+                  name: Run Tests
+                  command: |
+                      source ~/.devops/bin/activate
+                      make test
 
 workflows:
     main:
