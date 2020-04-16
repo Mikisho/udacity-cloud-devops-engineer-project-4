@@ -5,13 +5,13 @@ def test_home():
     res = app.test_client().get("/")
 
     assert res.status_code == 200
-    assert "Sklearn Prediction Home" in res.data.decode("utf-8")
+    assert b"Sklearn Prediction Home" in res.data
 
 
 def test_predict():
     res = app.test_client().post(
         "/predict",
-        data={
+        json={
             "CHAS": {"0": 0},
             "RM": {"0": 6.575},
             "TAX": {"0": 296.0},
@@ -19,6 +19,7 @@ def test_predict():
             "B": {"0": 396.9},
             "LSTAT": {"0": 4.98},
         },
+        follow_redirects=True,
     )
 
     assert res.status_code == 200
