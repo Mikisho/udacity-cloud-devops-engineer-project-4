@@ -11,7 +11,7 @@ setup:
 	python3 -m venv ~/.devops
 
 use-venv:
-	source ~/.devops/bin/activate 
+	. ~/.devops/bin/activate 
 
 install:
 	# This should be run from inside a virtualenv
