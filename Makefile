@@ -10,9 +10,6 @@ setup:
 	# source ~/.devops/bin/activate
 	python3 -m venv ~/.devops
 
-use-venv:
-	cd && . ~/.devops/bin/activate 
-
 install:
 	# This should be run from inside a virtualenv
 	pip3 install --trusted-host pypi.python.org -r requirements.txt
@@ -39,7 +36,7 @@ lint:
 	hadolint Dockerfile
 	# This is a linter for Python source code linter: https://www.pylint.org/
 	# This should be run from inside a virtualenv
-	pylint --disable=R,C,W1203 app.py
+	pylint --disable=R,C,W1202 app.py
 
 run-app:
 	python3 app.py
