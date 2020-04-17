@@ -154,7 +154,7 @@ If you want to delete the kubernetes cluster just run this command `minikube del
 
 ### Minikube
 
-Minikube common issues: `Out of memory` or `No space left on the device`. Change the instance type from `t2.micro` to ``t2.medium`and ensure at leat of 4GB of free space on the device. You can all docker images using this command`docker system prune -a`or remove all unused or dangling image with this command`docker system prune`
+Minikube common issues: `Out of memory` or `No space left on the device`. Change the instance type from `t2.micro` to `t2.medium` and ensure at leat of 4GB of free space on the device. You can all docker images using this command`docker system prune -a`or remove all unused or dangling image with this command`docker system prune`
 
 ### Bash scripts
 
