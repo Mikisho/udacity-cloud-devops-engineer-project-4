@@ -44,6 +44,8 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 
 ## Tasks
 
+To see the screenshots of each task go to the `screenshots` directory.
+
 ### 1. Complete the Dockerfile
 
 -   Specify your python version
