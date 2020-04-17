@@ -8,7 +8,7 @@ dockerpath=minorpatch/udacity-cloud-devops-p4
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl run '$dockerpath-app' --image=$dockerpath --port=80
+kubectl run app --image=$dockerpath --port=80
 
 # Step 3:
 # List kubernetes pods
@@ -16,4 +16,4 @@ kubectl get pods --all-namespaces
 
 # Step 4:
 # Forward the container port to a host
-kubectl port-forward '$dockerpath-app' 80:80
+kubectl port-forward app 80:80
