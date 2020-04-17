@@ -32,7 +32,7 @@ test:
 
 test-junit:
 	# Generate test results for circleci
-	python3 -m pytest -vv test_app.py --junitxml=test-results/junit.xml
+	python3 -m pytest -vv test_app.py --junitxml=~/test-results/junit.xml
 
 lint:
 	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
