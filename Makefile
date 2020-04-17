@@ -30,7 +30,7 @@ test:
 	#python3 -m pytest --nbval notebook.ipynb
 	python3 -m pytest -vv test_app.py
 
-test-junit: test --junitxml=test-results/junit.xml
+test-junit: python3 -m pytest -vv test_app.py --junitxml=test-results/junit.xml
 
 lint:
 	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
