@@ -77,7 +77,7 @@ Run the container using the `run_docker.sh` script created before following the 
 $ . ./run_docker.sh # Check the `Workarounds` section if you want to get more information about this.
 ```
 
-After running the container (docker app) we can able to run the prediction using the `make_prediction.sh`:
+After running the container (docker app) we can able to run the prediction using the `make_prediction.sh` script:
 
 ```sh
 $ . ./make_prediction.sh # Don't forget run the container before
@@ -136,7 +136,7 @@ After complete all steps run the kubernetes using `run_kubernetes.sh` script:
 $ . ./run_kubernetes.sh
 ```
 
-After running the kubernete make a prediction using the `make_prediction.sh` script as we do in the [second task](#2-run-container-&-make-prediction).
+After running the kubernete make a prediction using the `make_prediction.sh` script as we do in the [second task](#2-run-container--make-prediction).
 
 > **Note:** Don't forget copy the output to the `kubernetes_out.txt`
 
